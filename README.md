@@ -6,7 +6,7 @@
 
 **适合第一次把自用项目交给别人使用的作者。** 手上有一个普通文件夹就能开始。README 是访客打开仓库时先看到的说明；Skill 是可以安装给 Agent、在不同项目里反复使用的一套工作指引。
 
-[如何安装](#install) · [第一次怎么问](#first-run) · [看一段真实对话](#guided-example) · [开源与 README 原文](#sources) · [34 个模块目录](#modules)
+[如何安装](#install) · [第一次怎么问](#first-run) · [看一段真实对话](#guided-example) · [开源与 README 原文](#sources) · [⚖️ 许可证怎么选](#license) · [34 个模块目录](#modules)
 
 <a id="features"></a>
 
@@ -163,7 +163,7 @@ fi
 
 **安装后没有识别，或看到旧版行为，怎么排查？** 先检查当前 Agent 的个人技能目录和正在打开的项目目录里有没有同名 Skill，再打开内层 `SKILL.md`，看其中是否有“分轮引导”。旧版本也可能使用相同显示名。备份旧版时，放到 Agent 不会扫描的其他目录。回到目标项目，在新对话中显式点名测试。
 
-**助手会替我选许可证或自动发布吗？** 你决定项目和第三方材料的授权范围。准备发布清单、实际推送和公开发行是不同的操作，执行范围以你的具体请求为准。
+**助手会替我选许可证或自动发布吗？** 助手可以帮你比较条件，由你为自己有权授权的内容选择许可证。实际推送和公开发行按你的明确要求执行。[七种常见许可证怎么选](#license)
 
 <a id="docs"></a>
 
@@ -242,7 +242,24 @@ fi
 
 ## 许可证 · License
 
-本项目采用 MIT 许可证，版权署名为 Jiangnan-Studio。改编自 `grilling` 的部分保留 Matt Pocock 的版权和 MIT 许可全文。两份声明都会随可安装的 Skill 一起分发。[项目许可证](LICENSE) · [第三方许可说明](skills/open-source-project-builder/THIRD-PARTY-NOTICES.md)
+> [!IMPORTANT]
+> **别人能直接改我仓库里的代码吗？** 即使你采用很宽松的 MIT 许可证，访客也不会因此获得向 `main` 推送的权限。他们可以在 GitHub 上 Fork（创建自己的副本），再通过 Pull Request（PR）建议你合入改动。谁能写入主仓库、哪些改动能合并，由仓库权限和分支规则决定。[GitHub 仓库权限](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-levels-for-a-personal-account-repository) · [分支保护规则](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
+
+**许可证的作用，是提前说清别人可以怎样使用你的作品，以及要遵守哪些条件。** 如果你把仓库设为公开，却没有授予开源许可，GitHub 条款仍允许其他人在平台上查看和 Fork。代码仍受默认著作权规则保护。把代码集成到自己的产品、对外分发或发布修改版，通常需要另获授权，或有其他适用的法律依据。有了开源许可证，使用者就可以直接依照条款行事。[GitHub 仓库许可说明](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) · [GitHub 向其他用户授予的平台权限](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#5-license-grant-to-other-users)
+
+**拿本项目举例。** 项目开源助手采用 MIT，版权署名为 Jiangnan-Studio。你可以把它适配到另一个 Agent，也可以把改进版放进闭源收费产品。分发副本或其中的实质性部分时，须保留版权声明和 MIT 许可声明。随包改编自 `grilling` 的部分还应保留 Matt Pocock 的原声明。两份文件都在可安装的 Skill 目录里。[项目许可证](LICENSE) · [第三方许可说明](skills/open-source-project-builder/THIRD-PARTY-NOTICES.md)
+
+**给自己的项目选哪一种？** 下列七种都允许商业使用。选型时更值得问的是：别人分发改版，或用改版提供网络服务时，你希望哪些源码继续向哪些人开放？
+
+| 许可证 | 主要条件 | 适合的目标 |
+|---|---|---|
+| MIT | 允许闭源分发，副本或实质性部分须保留版权和许可声明。 | 希望小工具、Skill、模板或库容易被采用和改编。[MIT 原文](https://opensource.org/license/mit) |
+| BSD 3-Clause | 再分发须保留版权、许可条件和免责声明。未经书面许可，不得用版权人或贡献者的名义为衍生产品背书。 | 希望广泛复用，也要明确约束宣传背书。[BSD 原文](https://opensource.org/license/bsd-3-clause) |
+| Apache 2.0 | 含贡献者对相关专利权利要求的明确授权。再分发时附许可证、标明改动过的文件，并保留适用的署名及上游 `NOTICE` 内容。 | 希望 SDK、框架或基础设施便于商业集成，同时讲清专利授权。[Apache 原文](https://www.apache.org/licenses/LICENSE-2.0) |
+| MPL 2.0 | 对外分发时，须向接收者提供受 MPL 覆盖文件（含修改）的源码。不含 MPL 代码的独立文件可采用其他许可证。 | 希望对原文件的改进保持开放，也允许它们用于更大的闭源产品。[Mozilla 官方问答](https://www.mozilla.org/en-US/MPL/2.0/FAQ/) |
+| LGPL v3 | 闭源应用可在符合条件时链接该库。分发修改后的库须提供对应源码。分发组合程序时，还须满足允许用户替换或重新链接该库等条件。 | 希望商业应用也能使用一个库，并保留用户修改、替换该库的能力。[LGPL 原文](https://opensource.org/license/lgpl-3-0) |
+| GPL v3 | 对外分发受 GPL 覆盖的衍生作品时须按 GPL 授权。交付二进制时须按条款向接收者提供对应源码。仅内部运行或修改通常不触发分发义务。 | 希望收到衍生版本的人也能研究、修改和再分发它。[GPL 原文](https://opensource.org/license/gpl-3-0) |
+| AGPL v3 | 除 GPL 的分发条件外，若修改后的程序支持远程网络交互，还须为与该版本交互的所有用户显著提供获取对应源码的途径。 | 希望改版用于 Web 应用或 SaaS 服务时，远程用户也能取得该版本的源码。[AGPL 第 13 条](https://opensource.org/license/agpl-3.0) |
 
 <a id="badges"></a>
 
