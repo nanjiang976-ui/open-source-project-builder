@@ -1,5 +1,7 @@
 # 第三方说明
 
+`assets/licenses/` 中的七份文档是供目标项目选用的标准许可证正文，各自保留原文声明。文本来自 [Choose a License 的固定版本](https://github.com/github/choosealicense.com/tree/58e7062bce0f58d5e9c4cfcb1688d7e4331f0ed9/_licenses)，剥离了网站元数据；LGPL v3 文本后附其引用的完整 GPL v3 文本。
+
 本 Skill 的“分轮引导”部分改编自 Matt Pocock 的 `grilling`。下文保留这部分内容的原作者版权和 MIT 许可全文。本助手自身也采用 MIT 许可证。[项目许可证](LICENSE)
 
 [上游 Skill（固定版本）](https://github.com/mattpocock/skills/blob/5863806dd4e15c63174bee4e7515a4256792ecfa/skills/productivity/grilling/SKILL.md) · [原始许可证](https://github.com/mattpocock/skills/blob/5863806dd4e15c63174bee4e7515a4256792ecfa/LICENSE)
