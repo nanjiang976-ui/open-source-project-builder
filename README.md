@@ -144,6 +144,15 @@ fi
 
 既有 Windows Codex 桌面后端的记录覆盖技能发现、多轮回复以及两种快捷请求的实际改动范围。记录中分别标明实际运行、根据源码推导的预期，以及仍待真人操作的环节。[分轮引导与快捷入口实测](docs/cases/guided-review.md) · [首次安装与调用](docs/cases/self-review.md)
 
+2026 年 11 月 19 日，我们还把[公开版本的 Skill](https://github.com/nanjiang976-ui/open-source-project-builder/tree/80f89a37307f4d674bda0bd8604126096268089b/skills/open-source-project-builder) 安装到了以下两个客户端的个人目录。在每个客户端中，都打开了一个没有项目级 Skill 的普通项目，实际进行了两轮对话。
+
+| 实测环境 | 两轮对话中观察到什么 |
+|---|---|
+| Windows · Codex 桌面后端 | 仅发现一个同名的用户级 Skill。助手识别出 ClipClock 的 HTML 成品和源码，作者选开发者后，第二轮转向测试、构建和成功标志。独立运行测试与构建均通过。 |
+| Windows · Claude Code 2.1.150 | 在 InkCount 项目里用 `/open-source-project-builder` 点名后，助手读到了离线 HTML 和 Python 入口。作者选普通读者后，第二轮讨论怎样取得并打开 HTML、首次操作怎样验收。 |
+
+两个样例的文件内容在引导前后一致。Claude Code 首轮曾把 InkCount 的命令行输入描述为管道；请它核对入口后，它更正为文件路径参数。独立运行 `python inkcount.py examples/morning.txt` 得到 `3`。验证自己的项目时，也可以请 Agent 指出命令依据，再亲自核对输出。macOS 和 Linux 给出了对应的安装命令，干净系统上的首次调用以及真人独立上手列在[后续方向](#roadmap)。
+
 <a id="faq"></a>
 
 ## 常见问题 · FAQ
