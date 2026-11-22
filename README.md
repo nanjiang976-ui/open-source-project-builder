@@ -6,6 +6,11 @@
 
 **适合第一次把自用项目交给别人使用的作者。** 手上有一个普通文件夹就能开始。README 是访客打开仓库时先看到的说明；Skill 是可以安装给 Agent、在不同项目里反复使用的一套工作指引。
 
+> [!TIP]
+> **[从 GitHub Releases 下载发布版](https://github.com/nanjiang976-ui/open-source-project-builder/releases/latest)**
+>
+> 第一次安装时，在发行页的 **Assets → Source code (zip)** 下载该版本的 ZIP，再按[手动安装步骤](#install-zip)继续。
+
 [如何安装](#install) · [完整开源流程](#open-source-flow) · [第一次怎么问](#first-run) · [看一段真实对话](#guided-example) · [开源与 README 原文](#sources) · [⚖️ 许可证怎么选](#license) · [34 个模块目录](#modules)
 
 <a id="features"></a>
@@ -28,7 +33,7 @@
 
 ## 如何安装 · Installation
 
-三种方法选一种。你需要一个支持本地 Agent Skills、能打开项目并读取文件的 Agent。下面是**当前用户级安装**，装好后可以在这台机器上的多个项目里使用。已有同名 Skill 时，先看[常见问题](#faq)。
+第一次安装建议选**方法一，从 GitHub Releases 下载固定版本的 ZIP**。你需要一个支持本地 Agent Skills、能打开项目并读取文件的 Agent。以下方法安装到当前用户范围，可以在这台机器上的多个项目里使用。已有同名 Skill 时，先看[常见问题](#faq)。
 
 | Agent | macOS／Linux 的个人技能目录 | Windows 的个人技能目录 | 在项目对话中点名 |
 |---|---|---|---|
@@ -37,15 +42,26 @@
 
 其他兼容 Agent 可在安装器里选相应名称，或按该客户端文档找到个人技能目录及调用方式。[安装器支持的 Agent](https://github.com/vercel-labs/skills/blob/main/docs/agents.md) · [Codex 技能目录](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills) · [Claude Code Skills](https://code.claude.com/docs/en/skills)
 
-### 方法一：用 npx 安装（推荐）
+<a id="install-zip"></a>
 
-在终端运行下面的命令，按提示选择你使用的 Agent。`-g` 表示安装到个人范围，`--skill` 指定这个仓库里的“项目开源助手”。本次核对的 Skills CLI 1.9.0 需要 Node.js 22.20.0 或更高版本，可用 `node --version` 检查。没有 Node.js 时可直接选方法二或三。[CLI 命令](https://github.com/vercel-labs/skills/blob/main/docs/commands.md) · [1.9.0 的运行环境声明](https://github.com/vercel-labs/skills/blob/57217cf86ba38148a57af9e90d14a4c049558330/package.json)
+### 方法一：下载 ZIP 手动安装（推荐）
+
+1. 打开[最新发行版](https://github.com/nanjiang976-ui/open-source-project-builder/releases/latest)，在 **Assets** 下点 **Source code (zip)**。需要重装某个版本时，到[历史发行列表](https://github.com/nanjiang976-ui/open-source-project-builder/releases)打开对应的版本，再下载该页的 ZIP。
+2. 完整解压，打开包含 `README.md` 的目录，进入 `skills`。找到里面的 **`open-source-project-builder`** 文件夹，打开它应能直接看到 `SKILL.md`、`agents/`、`references/`、`LICENSE` 和 `THIRD-PARTY-NOTICES.md`。
+3. 把这个内层文件夹整体复制到上表中所选 Agent 的个人技能目录。目录尚不存在时，先创建它再粘贴。Windows 的 `%USERPROFILE%` 和 macOS／Linux 的 `~` 都指当前用户的个人目录。此方法无需安装 Git 或 Node.js。
+4. 核对安装后的目录结尾是 `skills/open-source-project-builder/SKILL.md`。打开目标项目的新对话，按[首次使用示例](#first-run)调用。如果 Agent 尚未刷新技能列表，重新打开客户端再试。
+
+想试主分支上尚未发版的改动，也可以[下载 main 分支 ZIP](https://github.com/nanjiang976-ui/open-source-project-builder/archive/refs/heads/main.zip)，然后从第 2 步继续。这个下载入口会随 `main` 更新。
+
+### 方法二：用 npx 安装
+
+在终端运行下面的命令，按提示选择你使用的 Agent。`-g` 表示安装到个人范围，`--skill` 指定这个仓库里的“项目开源助手”。本次核对的 Skills CLI 1.9.0 需要 Node.js 22.20.0 或更高版本，可用 `node --version` 检查。[CLI 命令](https://github.com/vercel-labs/skills/blob/main/docs/commands.md) · [1.9.0 的运行环境声明](https://github.com/vercel-labs/skills/blob/57217cf86ba38148a57af9e90d14a4c049558330/package.json)
 
 ```sh
 npx skills add nanjiang976-ui/open-source-project-builder --skill open-source-project-builder -g
 ```
 
-### 方法二：用 Git 克隆后复制 Skill
+### 方法三：用 Git 克隆后复制 Skill
 
 需要 Git。在普通工作目录里运行下面的命令，选择尚无同名子目录的位置。克隆成功后，留在刚才运行命令的目录。仓库里的 `skills/open-source-project-builder/` 才是要安装的那一层。
 
@@ -84,13 +100,6 @@ else
     printf '%s\n' '请回到刚才执行 git clone 的目录。'
 fi
 ```
-
-### 方法三：下载 ZIP 手动安装
-
-1. [下载主分支 ZIP](https://github.com/nanjiang976-ui/open-source-project-builder/archive/refs/heads/main.zip) 并完整解压，打开包含本篇 README 的目录。
-2. 打开 `skills`，复制里面的 **`open-source-project-builder` 文件夹**。打开它应能直接看到 `SKILL.md`、`agents/`、`references/`、`LICENSE` 和 `THIRD-PARTY-NOTICES.md`。
-3. 在文件管理器中打开上表里所选 Agent 的个人技能目录。目录尚不存在时，先创建它，再粘贴。Windows 的 `%USERPROFILE%` 和 macOS／Linux 的 `~` 都指当前用户的个人目录。此方法无需安装 Git 或 Node.js。
-4. 核对安装后的目录结尾是 `skills/open-source-project-builder/SKILL.md`。打开目标项目的新对话，按下一节实际调用。如果 Agent 尚未刷新技能列表，重新打开客户端再试。
 
 <a id="first-run"></a>
 
